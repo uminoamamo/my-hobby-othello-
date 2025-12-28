@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>対戦オセロ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="start-screen">
+        <h1>Webオセロ</h1>
+        <p class="subtitle">設定を選んでゲームを開始してください</p>
+        
+        <div class="settings-container">
+            <div class="setting-group">
+                <h3>対戦ルール</h3>
+                <div class="input-row">
+                    <label><input type="checkbox" id="cpuStartToggle"> CPUと対戦 (白番)</label>
+                </div>
+                <div class="input-row">
+                    <label><input type="checkbox" id="passStartToggle" checked> パスを有効にする</label>
+                </div>
+                <p class="note">※無効にするとパス強制発生時の石の個数で勝敗が決定。</p>
+                <div class="input-row">
+        <label><input type="checkbox" id="mineModeToggle"> 地雷モードを有効にする</label>
+    </div>
+    <div class="input-row">
+        <label for="maxMinesSelect">地雷の設置数 (0〜30):</label>
+        <input type="number" id="maxMinesSelect" value="3" min="0" max="30">
+    </div>
+    <p class="note">※地雷を踏むと周囲8マス消滅。</p>
+    <p class="note">※mを押すと地雷の位置を表示します。※gでグレーモード</p>
+            </div>
+
+            <div class="setting-group">
+            <h3>ランダム削除機能</h3>
+            
+            <div class="inline-settings">
+                <label>
+                    回数
+                    <input type="number" id="removeCountSelect" value="3" min="0" max="10">
+                </label>
+                <label>
+                    開始
+                    <input type="number" id="startTurnSelect" value="20" min="1" max="60">
+                </label>
+                <label>
+                    間隔
+                    <input type="number" id="removeIntervalSelect" value="3" min="1" max="20">
+                </label>
+            </div>
+        
+        <p class="note">※回数 / 解禁ターン / 再使用間隔</p>
+    </div>
+
+            <div class="setting-group" style="padding:10px;">
+                <label><input type="checkbox" id="undoStartToggle" checked> 「待った」を有効にする</label>
+            </div>
+        </div>
+        
+        <button id="startGameBtn">ゲーム開始</button>
+    </div>
+
+    <div id="game-screen">
+        <div class="game-container">
+            <div id="board"></div>
+            
+            <div class="info-panel">
+                <div class="status-row">
+                    <div><span class="status-label">ターン</span><span class="status-value" id="turnCount">1</span></div>
+                    <div><span class="status-label">手番</span><span class="status-value" id="currentPlayer">黒</span></div>
+                </div>
+                
+                <div class="score-board">
+                    <div class="score-item">● 黒: <span id="blackScore">2</span></div>
+                    <div class="score-item">○ 白: <span id="whiteScore">2</span></div>
+                </div>
+                
+                <p id="message"></p>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <div class="action-buttons">
+                <button id="undoBtn">待った</button>
+                <button id="removeRandomBtn">ランダム削除</button>
+            </div>
+            <button id="newGameBtn" class="secondary-btn">タイトルに戻る</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
