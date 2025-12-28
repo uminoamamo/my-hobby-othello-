@@ -75,7 +75,7 @@
                 let ry = Math.floor(Math.random() * BOARD_SIZE);
 
                 // 中央4マス以外 ＆ まだ地雷がない場所
-                if (!((rx >= 3 && rx <= 4) && (ry >= 3 && ry <= 4)) && mineMap[ry][rx] === 0) {
+                if (!((rx >= 2 && rx <= 5) && (ry >= 2 && ry <= 5)) && mineMap[ry][rx] === 0) {
                     mineMap[ry][rx] = 1;
                     minesPlaced++;
                 }
@@ -199,10 +199,6 @@
                     }
                 }
                 boardElement.appendChild(cell);
-                // 地雷モード表示
-                //if (isMineMode && mineMap[y][x] === 1) {
-                //    cell.style.backgroundColor = "#486358"; // わずかに色を変える、またはドットを出す
-                //}   
             }
         }
         
@@ -545,4 +541,5 @@
             }
         }
     });
+
 });
